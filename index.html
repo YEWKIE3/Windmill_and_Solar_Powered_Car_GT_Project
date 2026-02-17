@@ -34,7 +34,7 @@
 
     nav a:hover { color: #38bdf8; }
 
-    /* HERO SECTION */
+    /* HERO */
     .hero {
       height: 100vh;
       display: flex;
@@ -50,9 +50,7 @@
     .hero h1 {
       font-size: 4em;
       z-index: 2;
-      position: relative;
       animation: fadeIn 2s ease-in-out;
-      line-height: 1.2;
     }
 
     .hero p {
@@ -60,60 +58,86 @@
       margin-top: 20px;
       color: #38bdf8;
       z-index: 2;
-      position: relative;
       animation: fadeIn 3s ease-in-out;
     }
 
-    /* WINDMILL */
+    /* REALISTIC TURBINE */
     .windmill-container {
-      margin-top: 40px;
+      margin-top: 60px;
       z-index: 2;
       position: relative;
     }
 
     .windmill {
       position: relative;
-      width: 140px;
-      height: 200px;
+      width: 260px;
+      height: 400px;
+    }
+
+    .tower {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 30px;
+      height: 280px;
+      transform: translateX(-50%);
+      background: linear-gradient(to right, #e2e8f0, #94a3b8);
+      border-radius: 20px;
+      box-shadow: inset -5px 0 10px rgba(0,0,0,0.2);
+    }
+
+    .nacelle {
+      position: absolute;
+      bottom: 280px;
+      left: 50%;
+      width: 100px;
+      height: 40px;
+      transform: translateX(-50%);
+      background: linear-gradient(to right, #f1f5f9, #cbd5e1);
+      border-radius: 25px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    .hub {
+      position: absolute;
+      bottom: 300px;
+      left: 50%;
+      width: 28px;
+      height: 28px;
+      transform: translateX(-50%);
+      background: #ffffff;
+      border-radius: 50%;
+      z-index: 3;
+      box-shadow: 0 0 12px rgba(255,255,255,0.8);
     }
 
     .blades {
       position: absolute;
-      top: 20px;
+      bottom: 314px;
       left: 50%;
-      width: 120px;
-      height: 120px;
+      width: 260px;
+      height: 260px;
       transform: translateX(-50%);
-      animation: spin 3s linear infinite;
+      animation: spinTurbine 6s linear infinite;
     }
 
     .blade {
       position: absolute;
-      width: 12px;
-      height: 70px;
-      background: #38bdf8;
+      width: 18px;
+      height: 150px;
+      background: linear-gradient(to bottom, #ffffff, #cbd5e1);
+      border-radius: 70% 70% 40% 40%;
       left: 50%;
       top: 50%;
       transform-origin: bottom center;
-      border-radius: 6px;
+      box-shadow: inset -4px -6px 10px rgba(0,0,0,0.2);
     }
 
     .blade1 { transform: translate(-50%, -100%) rotate(0deg); }
     .blade2 { transform: translate(-50%, -100%) rotate(120deg); }
     .blade3 { transform: translate(-50%, -100%) rotate(240deg); }
 
-    .tower {
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      width: 14px;
-      height: 130px;
-      background: #cbd5e1;
-      transform: translateX(-50%);
-      border-radius: 6px;
-    }
-
-    @keyframes spin {
+    @keyframes spinTurbine {
       from { transform: translateX(-50%) rotate(0deg); }
       to { transform: translateX(-50%) rotate(360deg); }
     }
@@ -181,6 +205,7 @@
       .section { padding: 8vw 5%; }
       .card { padding: 4vw; }
       nav a { margin: 0 10px; font-size: 4vw; }
+      .windmill { transform: scale(0.8); }
     }
   </style>
 </head>
@@ -204,6 +229,8 @@
         <div class="blade blade2"></div>
         <div class="blade blade3"></div>
       </div>
+      <div class="hub"></div>
+      <div class="nacelle"></div>
       <div class="tower"></div>
     </div>
   </div>
