@@ -1,325 +1,265 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Windmill Engineering Project</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    html { scroll-behavior: smooth; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Windmill & Solar Powered Car Project</title>
 
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: #0f172a;
-      color: white;
-      overflow-x: hidden;
-    }
+<style>
 
-    nav {
-      position: fixed;
-      width: 100%;
-      background: rgba(15, 23, 42, 0.9);
-      padding: 15px;
-      text-align: center;
-      z-index: 1001;
-      backdrop-filter: blur(10px);
-    }
+/* ===== GLOBAL ===== */
 
-    nav a {
-      color: white;
-      margin: 0 20px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: 0.3s;
-    }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    nav a:hover { color: #38bdf8; }
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(to bottom, #0f172a, #1e293b);
+  color: white;
+  overflow-x: hidden;
+}
 
-    /* HERO */
-    .hero {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      background: linear-gradient(to bottom, #0f172a, #1e293b);
-      position: relative;
-      overflow: hidden;
-    }
+section {
+  padding: 80px 20px;
+  max-width: 1100px;
+  margin: auto;
+}
 
-    .hero h1 {
-      font-size: 4em;
-      z-index: 2;
-      animation: fadeIn 2s ease-in-out;
-    }
+/* ===== HERO ===== */
 
-    .hero p {
-      font-size: 1.3em;
-      margin-top: 20px;
-      color: #38bdf8;
-      z-index: 2;
-      animation: fadeIn 3s ease-in-out;
-    }
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  text-align: center;
+}
 
-    /* REALISTIC TURBINE */
-    .windmill-container {
-      margin-top: 60px;
-      z-index: 2;
-      position: relative;
-    }
+.hero h1 {
+  font-size: clamp(30px, 5vw, 55px);
+  margin-bottom: 20px;
+}
 
-    .windmill {
-      position: relative;
-      width: 260px;
-      height: 400px;
-    }
+.hero p {
+  font-size: 18px;
+  opacity: 0.85;
+  max-width: 600px;
+}
 
-    .tower {
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      width: 30px;
-      height: 280px;
-      transform: translateX(-50%);
-      background: linear-gradient(to right, #e2e8f0, #94a3b8);
-      border-radius: 20px;
-      box-shadow: inset -5px 0 10px rgba(0,0,0,0.2);
-    }
+/* ===== FLOATING PARTICLES ===== */
 
-    .nacelle {
-      position: absolute;
-      bottom: 280px;
-      left: 50%;
-      width: 100px;
-      height: 40px;
-      transform: translateX(-50%);
-      background: linear-gradient(to right, #f1f5f9, #cbd5e1);
-      border-radius: 25px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    }
+.particles {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+}
 
-    .hub {
-      position: absolute;
-      bottom: 300px;
-      left: 50%;
-      width: 28px;
-      height: 28px;
-      transform: translateX(-50%);
-      background: #ffffff;
-      border-radius: 50%;
-      z-index: 3;
-      box-shadow: 0 0 12px rgba(255,255,255,0.8);
-    }
+.particles span {
+  position: absolute;
+  bottom: -50px;
+  width: 6px;
+  height: 6px;
+  background: rgba(255,255,255,0.5);
+  border-radius: 50%;
+  animation: rise linear infinite;
+}
 
-    .blades {
-      position: absolute;
-      bottom: 314px;
-      left: 50%;
-      width: 260px;
-      height: 260px;
-      transform: translateX(-50%);
-      animation: spinTurbine 6s linear infinite;
-    }
+@keyframes rise {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-110vh);
+    opacity: 0;
+  }
+}
 
-    .blade {
-      position: absolute;
-      width: 18px;
-      height: 150px;
-      background: linear-gradient(to bottom, #ffffff, #cbd5e1);
-      border-radius: 70% 70% 40% 40%;
-      left: 50%;
-      top: 50%;
-      transform-origin: bottom center;
-      box-shadow: inset -4px -6px 10px rgba(0,0,0,0.2);
-    }
+/* ===== WIND TURBINE ===== */
 
-    .blade1 { transform: translate(-50%, -100%) rotate(0deg); }
-    .blade2 { transform: translate(-50%, -100%) rotate(120deg); }
-    .blade3 { transform: translate(-50%, -100%) rotate(240deg); }
+.windmill-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin-top: 50px;
+  z-index: 2;
+  position: relative;
+}
 
-    @keyframes spinTurbine {
-      from { transform: translateX(-50%) rotate(0deg); }
-      to { transform: translateX(-50%) rotate(360deg); }
-    }
+.turbine {
+  position: relative;
+  width: 140px;
+  height: 280px;
+}
 
-    /* PARTICLES */
-    .hero .circle {
-      position: absolute;
-      border-radius: 50%;
-      pointer-events: none;
-      background: #38bdf8;
-      box-shadow: 0 0 10px rgba(56,189,248,0.5);
-      opacity: 0.3;
-      animation-name: floatUp;
-      animation-timing-function: linear;
-      animation-iteration-count: infinite;
-    }
+/* Tower */
+.tower {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 18px;
+  height: 200px;
+  transform: translateX(-50%);
+  background: linear-gradient(to right, #d1d5db, #9ca3af);
+  border-radius: 10px;
+}
 
-    @keyframes floatUp {
-      0% { bottom: 0; }
-      100% { bottom: 100%; }
-    }
+/* Nacelle */
+.nacelle {
+  position: absolute;
+  bottom: 200px;
+  left: 50%;
+  width: 60px;
+  height: 22px;
+  transform: translateX(-50%);
+  background: linear-gradient(to right, #e5e7eb, #cbd5e1);
+  border-radius: 12px;
+}
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(40px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+/* Rotor */
+.rotor {
+  position: absolute;
+  bottom: 211px;
+  left: 50%;
+  width: 120px;
+  height: 120px;
+  transform: translateX(-50%);
+  animation: spin 5s linear infinite;
+}
 
-    /* SECTIONS */
-    .section {
-      padding: 100px 10%;
-      text-align: center;
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all 0.8s ease;
-    }
+/* Hub */
+.hub {
+  position: absolute;
+  bottom: 222px;
+  left: 50%;
+  width: 18px;
+  height: 18px;
+  transform: translateX(-50%);
+  background: #f8fafc;
+  border-radius: 50%;
+  z-index: 3;
+}
 
-    .section.show { opacity: 1; transform: translateY(0); }
-    .section h2 { font-size: 2.5em; margin-bottom: 30px; color: #38bdf8; }
+/* Blades */
+.blade {
+  position: absolute;
+  width: 10px;
+  height: 65px;
+  background: linear-gradient(to bottom, #ffffff, #cbd5e1);
+  border-radius: 50% 50% 40% 40%;
+  left: 50%;
+  top: 50%;
+  transform-origin: bottom center;
+}
 
-    .card {
-      background: #1e293b;
-      padding: 30px;
-      margin: 20px auto;
-      border-radius: 15px;
-      max-width: 800px;
-      text-align: left;
-      transition: 0.4s;
-    }
+.blade1 { transform: translate(-50%, -100%) rotate(0deg); }
+.blade2 { transform: translate(-50%, -100%) rotate(120deg); }
+.blade3 { transform: translate(-50%, -100%) rotate(240deg); }
 
-    .card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 30px rgba(56,189,248,0.4);
-    }
+@keyframes spin {
+  from { transform: translateX(-50%) rotate(0deg); }
+  to { transform: translateX(-50%) rotate(360deg); }
+}
 
-    footer {
-      text-align: center;
-      padding: 40px;
-      background: #020617;
-    }
+/* ===== SECTIONS ===== */
 
-    @media(max-width: 768px){
-      .hero h1 { font-size: 8vw; }
-      .hero p { font-size: 4vw; }
-      .section h2 { font-size: 7vw; }
-      .section { padding: 8vw 5%; }
-      .card { padding: 4vw; }
-      nav a { margin: 0 10px; font-size: 4vw; }
-      .windmill { transform: scale(0.8); }
-    }
-  </style>
+h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.section-text {
+  max-width: 800px;
+  margin: auto;
+  text-align: center;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 768px) {
+  section {
+    padding: 60px 15px;
+  }
+}
+
+</style>
 </head>
 
 <body>
 
-<nav>
-  <a href="#overview">Overview</a>
-  <a href="#design">Design</a>
-  <a href="#progress">Project Progress</a>
-</nav>
+<!-- HERO SECTION -->
+<section class="hero">
 
-<div class="hero">
+  <div class="particles">
+    <span style="left:10%; animation-duration:6s;"></span>
+    <span style="left:25%; animation-duration:8s;"></span>
+    <span style="left:40%; animation-duration:7s;"></span>
+    <span style="left:55%; animation-duration:9s;"></span>
+    <span style="left:70%; animation-duration:6s;"></span>
+    <span style="left:85%; animation-duration:8s;"></span>
+  </div>
+
   <h1>Windmill Engineering Project</h1>
-  <p>Innovating Renewable Energy Through Design</p>
+  <p>Designing and building a renewable energy system powered by wind and solar innovation.</p>
 
-  <div class="windmill-container">
-    <div class="windmill">
-      <div class="blades">
+  <div class="windmill-wrapper">
+    <div class="turbine">
+      <div class="tower"></div>
+      <div class="nacelle"></div>
+
+      <div class="rotor">
         <div class="blade blade1"></div>
         <div class="blade blade2"></div>
         <div class="blade blade3"></div>
       </div>
+
       <div class="hub"></div>
-      <div class="nacelle"></div>
-      <div class="tower"></div>
     </div>
   </div>
-</div>
 
-<div id="overview" class="section">
+</section>
+
+<!-- PROJECT OVERVIEW -->
+<section>
   <h2>Project Overview</h2>
-  <div class="card">
-    <p>
-      Our windmill project focuses on designing and constructing a functional
-      small-scale wind turbine capable of converting kinetic wind energy into
-      electrical energy. The goal is to explore renewable energy solutions
-      while applying real-world engineering principles such as aerodynamics,
-      mechanical energy transfer, structural stability, and efficiency testing.
-    </p>
-    <p>
-      Through research, prototyping, and experimentation, we are analyzing how
-      blade angle, blade shape, material selection, and wind speed affect power
-      output. This project demonstrates how sustainable energy systems can be
-      engineered to reduce reliance on fossil fuels and promote cleaner energy
-      alternatives.
-    </p>
+  <div class="section-text">
+    This project focuses on creating a wind and solar powered vehicle that demonstrates renewable energy efficiency.
+    Our goal is to explore sustainable engineering solutions and understand how clean energy can power transportation.
   </div>
-</div>
+</section>
 
-<div id="design" class="section">
+<!-- ENGINEERING DESIGN -->
+<section>
   <h2>Engineering Design</h2>
-  <div class="card">
-    <p>
-      We are testing different blade designs, materials, and structural layouts
-      to maximize efficiency and durability. Each prototype undergoes wind
-      testing to measure rotation speed, energy output, and stability under
-      variable wind conditions.
-    </p>
-    <p>
-      By applying mechanical principles and material science, we aim to
-      optimize the windmill for real-world energy production while maintaining
-      safety and sustainability.
-    </p>
+  <div class="section-text">
+    The engineering process includes research, prototyping, aerodynamic testing, and system optimization.
+    We are designing turbine blades to maximize airflow efficiency and integrating solar panels to provide supplemental power.
   </div>
-</div>
+</section>
 
-<div id="progress" class="section">
+<!-- PROJECT PROGRESS -->
+<section>
   <h2>Project Progress</h2>
-  <div class="card">
-    <p>
-      We are currently building and testing our windmill prototypes. Photos,
-      diagrams, and detailed descriptions of each step will be added here as
-      the project progresses.
-    </p>
+  <div class="section-text">
+    We are currently developing our blade prototypes and refining the wind energy capture system.
+    Testing and improvements are ongoing as we work toward building a fully functional renewable energy vehicle.
+    Photos and detailed documentation will be added soon.
   </div>
-</div>
-
-<footer>
-  <p>Engineering Project 2026</p>
-  <p style="opacity: 0.7; font-size: 0.9em;">
-    Created by Miguel Mendez, Alan Najera, Chau Duy, and Luis Zepeda
-  </p>
-</footer>
-
-<script>
-  window.scrollTo(0,0);
-
-  const sections = document.querySelectorAll('.section');
-  window.addEventListener('scroll', ()=>{
-    sections.forEach(section=>{
-      if(section.getBoundingClientRect().top < window.innerHeight*0.85){
-        section.classList.add('show');
-      }
-    });
-  });
-
-  window.onload = function() {
-    const hero = document.querySelector('.hero');
-    const numParticles = 30;
-    for (let i = 0; i < numParticles; i++) {
-      const circle = document.createElement('div');
-      circle.classList.add('circle');
-      circle.style.left = Math.random() * 100 + 'vw';
-      circle.style.bottom = '0';
-      const size = Math.random() * 15 + 5;
-      circle.style.width = size + 'px';
-      circle.style.height = size + 'px';
-      circle.style.animationDuration = (Math.random() * 8 + 6) + 's';
-      circle.style.opacity = Math.random() * 0.5 + 0.2;
-      hero.appendChild(circle);
-    }
-  };
-</script>
+</section>
 
 </body>
 </html>
