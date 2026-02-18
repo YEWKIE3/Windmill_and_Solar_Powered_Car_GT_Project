@@ -10,8 +10,8 @@ html { scroll-behavior: smooth; }
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  /* Smooth multi-tone blue gradient for entire page (outside hero) */
-  background: linear-gradient(180deg, #0f172a 0%, #1e3a8a 40%, #3b82f6 70%, #60a5fa 100%);
+  /* Multi-tone blue gradient for the rest of the page */
+  background: linear-gradient(180deg, #1e3a8a 0%, #2563eb 40%, #3b82f6 70%, #60a5fa 100%);
   color: white;
   overflow-x: hidden;
 }
@@ -37,7 +37,7 @@ nav a {
 
 nav a:hover { color: #38bdf8; }
 
-/* HERO SECTION - stays the same as original */
+/* HERO SECTION - remains unchanged */
 .hero {
   height: 100vh;
   display: flex;
@@ -97,7 +97,7 @@ nav a:hover { color: #38bdf8; }
   opacity: 0;
   transform: translateY(40px);
   transition: all 0.8s ease;
-  background: transparent; /* page gradient shows through */
+  background: transparent;
 }
 
 .section.show { opacity: 1; transform: translateY(0); }
@@ -105,17 +105,18 @@ nav a:hover { color: #38bdf8; }
 .section h2 {
   font-size: 2.5em;
   margin-bottom: 30px;
-  color: #38bdf8;
+  color: white; /* section headers now white */
 }
 
 .card {
-  background: rgba(30, 41, 59, 0.7); /* semi-transparent so gradient shows through */
+  background: rgba(30, 41, 59, 0.7); /* semi-transparent for gradient */
   padding: 30px;
   margin: 20px auto;
   border-radius: 15px;
   max-width: 900px;
   text-align: left;
   transition: 0.4s;
+  color: white; /* card text now white */
 }
 
 .card:hover {
@@ -169,6 +170,7 @@ footer {
   <p>Innovating Renewable Energy Through Design</p>
 </div>
 
+<!-- OVERVIEW -->
 <div id="overview" class="section">
   <h2>Project Overview</h2>
   <div class="card">
@@ -189,6 +191,7 @@ footer {
   </div>
 </div>
 
+<!-- ENGINEERING DESIGN -->
 <div id="design" class="section">
   <h2>Engineering Design</h2>
   <div class="card">
@@ -206,6 +209,7 @@ footer {
   </div>
 </div>
 
+<!-- TESTING VIDEO -->
 <div id="progress" class="section">
   <h2>Project Testing Video</h2>
   <div class="card">
