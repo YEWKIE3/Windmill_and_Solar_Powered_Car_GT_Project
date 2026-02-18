@@ -1,104 +1,163 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Windmill Engineering Project</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    html { scroll-behavior: smooth; }
+<title>Windmill Engineering Project</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: #0f172a;
-      color: white;
-      overflow-x: hidden;
-    }
+<style>
+html { scroll-behavior: smooth; }
 
-    nav {
-      position: fixed;
-      width: 100%;
-      background: rgba(15, 23, 42, 0.9);
-      padding: 15px;
-      text-align: center;
-      z-index: 1001;
-      backdrop-filter: blur(10px);
-    }
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #0f172a;
+  color: white;
+  overflow-x: hidden;
+}
 
-    nav a {
-      color: white;
-      margin: 0 20px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: 0.3s;
-    }
+nav {
+  position: fixed;
+  width: 100%;
+  background: rgba(15, 23, 42, 0.9);
+  padding: 15px;
+  text-align: center;
+  z-index: 1001;
+  backdrop-filter: blur(10px);
+}
 
-    nav a:hover { color: #38bdf8; }
+nav a {
+  color: white;
+  margin: 0 20px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
 
-    .hero {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      background: linear-gradient(to bottom, #0f172a, #1e293b);
-    }
+nav a:hover { color: #38bdf8; }
 
-    .hero h1 {
-      font-size: 4em;
-      color: #38bdf8;
-    }
+/* HERO SECTION */
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: linear-gradient(to bottom, #0f172a, #1e293b);
+  position: relative;
+  overflow: hidden;
+}
 
-    .hero p {
-      font-size: 1.3em;
-      margin-top: 20px;
-    }
+.hero h1 {
+  font-size: 4em;
+  z-index: 2;
+  position: relative;
+  animation: fadeIn 2s ease-in-out;
+  line-height: 1.2;
+}
 
-    .section {
-      padding: 100px 10%;
-      text-align: center;
-    }
+.hero p {
+  font-size: 1.3em;
+  margin-top: 20px;
+  color: #38bdf8;
+  z-index: 2;
+  position: relative;
+  animation: fadeIn 3s ease-in-out;
+}
 
-    .section h2 {
-      font-size: 2.5em;
-      margin-bottom: 30px;
-      color: #38bdf8;
-    }
+/* PARTICLES */
+.hero .circle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  background: #38bdf8;
+  box-shadow: 0 0 10px rgba(56,189,248,0.5);
+  opacity: 0.3;
+  animation-name: floatUp;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
 
-    .card {
-      background: #1e293b;
-      padding: 30px;
-      margin: 20px auto;
-      border-radius: 15px;
-      max-width: 900px;
-      text-align: left;
-    }
+@keyframes floatUp {
+  0% { bottom: 0; }
+  100% { bottom: 100%; }
+}
 
-    video {
-      margin-top: 20px;
-      border-radius: 12px;
-      width: 100%;
-    }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
-    footer {
-      text-align: center;
-      padding: 40px;
-      background: #020617;
-    }
+/* SECTIONS */
+.section {
+  padding: 100px 10%;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
 
-    @media(max-width: 768px){
-      .hero h1 { font-size: 8vw; }
-      .section h2 { font-size: 7vw; }
-      nav a { margin: 0 10px; font-size: 4vw; }
-    }
-  </style>
+.section.show { opacity: 1; transform: translateY(0); }
+
+.section h2 {
+  font-size: 2.5em;
+  margin-bottom: 30px;
+  color: #38bdf8;
+}
+
+.card {
+  background: #1e293b;
+  padding: 30px;
+  margin: 20px auto;
+  border-radius: 15px;
+  max-width: 900px;
+  text-align: left;
+  transition: 0.4s;
+}
+
+.card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 30px rgba(56,189,248,0.4);
+}
+
+video {
+  margin-top: 20px;
+  border-radius: 12px;
+  outline: none;
+}
+
+footer {
+  text-align: center;
+  padding: 40px;
+  background: #020617;
+}
+
+/* RESPONSIVE */
+@media(max-width: 768px){
+  .hero h1 { font-size: 8vw; }
+  .hero p { font-size: 4vw; }
+  .section h2 { font-size: 7vw; }
+  .section { padding: 8vw 5%; }
+  .card { padding: 4vw; }
+  nav a { margin: 0 10px; font-size: 4vw; }
+}
+
+@media(max-width: 480px){
+  .hero h1 { font-size: 10vw; }
+  .hero p { font-size: 5vw; }
+  .section h2 { font-size: 9vw; }
+  nav a { font-size: 5vw; }
+}
+</style>
 </head>
 
 <body>
 
 <nav>
-  <a href="index.html">Windmill</a>
-  <a href="solar.html">Solar Powered Car</a>
+  <a href="#overview">Overview</a>
+  <a href="#design">Design</a>
+  <a href="#progress">Testing Video</a>
+  <a href="#solar">Solar Powered Car</a> <!-- NEW LINK -->
 </nav>
 
 <div class="hero">
@@ -106,28 +165,36 @@
   <p>Innovating Renewable Energy Through Design</p>
 </div>
 
-<div class="section">
+<div id="overview" class="section">
   <h2>Project Overview</h2>
   <div class="card">
     <p>
-      Through research, prototyping, and experimentation, we are analyzing how blade angle, blade shape, material selection, and wind speed affect power output. This project demonstrates how sustainable energy systems can be engineered to reduce reliance on fossil fuels and promote cleaner energy alternatives.
+      Our windmill project focuses on designing and constructing a functional
+      small-scale wind turbine capable of converting kinetic wind energy into
+      electrical energy.
+    </p>
+    <p>
+      Through research, prototyping, and experimentation, we are analyzing how
+      blade angle, blade shape, material selection, and wind speed affect power
+      output.
     </p>
   </div>
 </div>
 
-<div class="section">
+<div id="design" class="section">
   <h2>Engineering Design</h2>
   <div class="card">
     <p>
-      We are testing different blade designs, materials, and structural layouts to maximize efficiency and durability. Each prototype undergoes wind testing to measure rotation speed, energy output, and stability under variable wind conditions.
+      We are testing different blade designs, materials, and structural layouts
+      to maximize efficiency and durability.
     </p>
   </div>
 </div>
 
-<div class="section">
+<div id="progress" class="section">
   <h2>Project Testing Video</h2>
   <div class="card">
-    <video controls>
+    <video width="100%" controls>
       <source src="copy_4BC7AB96-84F0-497A-9FC2-3589BDA1CE53.MOV" type="video/quicktime">
       <track src="captions-en.vtt"
              kind="subtitles"
@@ -139,12 +206,62 @@
   </div>
 </div>
 
+<!-- NEW SOLAR POWERED CAR SECTION -->
+<div id="solar" class="section">
+  <h2>Solar Powered Car</h2>
+  <div class="card">
+    <p>
+      In addition to our windmill project, we are designing and building a solar powered car
+      that converts sunlight into electrical energy using a solar panel.
+    </p>
+    <p>
+      The vehicle uses a DC motor powered directly by solar energy. We are testing
+      different gear ratios, motor configurations, and weight distribution to
+      maximize speed and efficiency.
+    </p>
+    <p>
+      This project allows us to explore renewable transportation technology and
+      understand how solar energy can be applied to real-world engineering systems.
+    </p>
+  </div>
+</div>
+
 <footer>
   <p>Engineering Project 2026</p>
   <p style="opacity: 0.7; font-size: 0.9em;">
     Created by Miguel Mendez, Alan Najera, Chau Duy, and Luis Zepeda
   </p>
 </footer>
+
+<script>
+window.scrollTo(0,0);
+
+const sections = document.querySelectorAll('.section');
+window.addEventListener('scroll', ()=>{
+  sections.forEach(section=>{
+    if(section.getBoundingClientRect().top < window.innerHeight*0.85){
+      section.classList.add('show');
+    }
+  });
+});
+
+window.onload = function() {
+  const hero = document.querySelector('.hero');
+  const numParticles = 30;
+  for (let i = 0; i < numParticles; i++) {
+    const circle = document.createElement('div');
+    circle.classList.add('circle');
+    circle.style.left = Math.random() * 100 + 'vw';
+    circle.style.bottom = '0';
+    const size = Math.random() * 15 + 5;
+    circle.style.width = size + 'px';
+    circle.style.height = size + 'px';
+    circle.style.animationDuration = (Math.random() * 8 + 6) + 's';
+    circle.style.opacity = Math.random() * 0.5 + 0.2;
+    hero.appendChild(circle);
+  }
+};
+</script>
 
 </body>
 </html>
