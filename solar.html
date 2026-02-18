@@ -120,14 +120,14 @@ nav ul li a:hover {
     font-size: 2.5em;
     margin-bottom: 30px;
     color: #FFD700;
+    text-align: center; /* centered like windmill */
 }
 
 /* CARDS */
 .card-container {
     display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     margin-top: 40px;
 }
 
@@ -136,10 +136,11 @@ nav ul li a:hover {
     backdrop-filter: blur(10px);
     padding: 30px;
     border-radius: 15px;
-    width: 300px;
+    max-width: 900px; /* same as windmill */
+    margin: 20px 0;
+    text-align: left;
     transition: 0.4s;
     color: white;
-    text-align: left;
 }
 
 .card:hover {
