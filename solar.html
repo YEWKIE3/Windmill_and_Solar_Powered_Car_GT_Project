@@ -64,8 +64,7 @@ nav ul li a:hover {
 /* HERO SECTION */
 .hero {
     height: 100vh;
-    background: linear-gradient(to right, rgba(255,140,0,0.6), rgba(255,94,77,0.6)),
-                url("https://images.unsplash.com/photo-1509395176047-4a66953fd231") no-repeat center center/cover;
+    background: linear-gradient(to right, rgba(255,140,0,0.8), rgba(255,94,77,0.8));
     display: flex;
     justify-content: center;
     align-items: center;
@@ -96,14 +95,6 @@ nav ul li a:hover {
     color: #ffffff;
 }
 
-.section p {
-    font-size: 1.1rem;
-    max-width: 800px;
-    margin: auto;
-    line-height: 1.6;
-    color: #fff8f0;
-}
-
 /* CARDS */
 .card-container {
     display: flex;
@@ -125,7 +116,8 @@ nav ul li a:hover {
 
 .card:hover {
     transform: translateY(-10px);
-    background: rgba(255,255,255,0.3);
+    background: #FFD700; /* Surprise pop color */
+    color: #2b2b2b;
 }
 
 /* FOOTER */
@@ -139,6 +131,11 @@ footer {
 @media(max-width: 768px){
     .hero h1 {
         font-size: 2.2rem;
+    }
+
+    .card-container {
+        flex-direction: column;
+        align-items: center;
     }
 }
 </style>
@@ -165,28 +162,40 @@ footer {
 <!-- PROJECT OVERVIEW -->
 <section class="section">
     <h2>Project Overview</h2>
-    <p>
-        Our solar powered car converts sunlight directly into electrical energy using a photovoltaic solar panel system. 
-        The generated energy powers a DC motor that drives the vehicle forward.
-    </p>
+    <div class="card-container">
+        <div class="card">
+            <p>
+                Our solar powered car converts sunlight directly into electrical energy using a photovoltaic solar panel system. 
+                The generated energy powers a DC motor that drives the vehicle forward.
+            </p>
+        </div>
+    </div>
 </section>
 
 <!-- ENGINEERING DESIGN -->
 <section class="section">
     <h2>Engineering Design</h2>
-    <p>
-        We are testing different gear ratios, motor configurations, and panel placements to maximize speed and efficiency. 
-        Structural balance and weight distribution are also critical to maintaining optimal performance.
-    </p>
+    <div class="card-container">
+        <div class="card">
+            <p>
+                We are testing different gear ratios, motor configurations, and panel placements to maximize speed and efficiency. 
+                Structural balance and weight distribution are also critical to maintaining optimal performance.
+            </p>
+        </div>
+    </div>
 </section>
 
 <!-- TESTING -->
 <section class="section">
     <h2>Testing & Performance</h2>
-    <p>
-        Performance is measured by analyzing speed, torque, and energy output under varying sunlight intensities 
-        to determine efficiency improvements.
-    </p>
+    <div class="card-container">
+        <div class="card">
+            <p>
+                Performance is measured by analyzing speed, torque, and energy output under varying sunlight intensities 
+                to determine efficiency improvements.
+            </p>
+        </div>
+    </div>
 </section>
 
 <footer>
