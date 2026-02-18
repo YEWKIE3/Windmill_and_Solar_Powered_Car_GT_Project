@@ -10,8 +10,8 @@ html { scroll-behavior: smooth; }
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  /* Page background gradient for everything except hero */
-  background: linear-gradient(180deg, #1e3a8a 0%, #2563eb 100%);
+  /* Smooth multi-tone blue gradient for entire page (outside hero) */
+  background: linear-gradient(180deg, #0f172a 0%, #1e3a8a 40%, #3b82f6 70%, #60a5fa 100%);
   color: white;
   overflow-x: hidden;
 }
@@ -37,7 +37,7 @@ nav a {
 
 nav a:hover { color: #38bdf8; }
 
-/* HERO SECTION */
+/* HERO SECTION - stays the same as original */
 .hero {
   height: 100vh;
   display: flex;
@@ -45,7 +45,7 @@ nav a:hover { color: #38bdf8; }
   justify-content: center;
   align-items: center;
   text-align: center;
-  background: linear-gradient(to bottom, #0f172a, #1e293b); /* Original hero gradient */
+  background: linear-gradient(to bottom, #0f172a, #1e293b);
   position: relative;
   overflow: hidden;
 }
@@ -97,8 +97,7 @@ nav a:hover { color: #38bdf8; }
   opacity: 0;
   transform: translateY(40px);
   transition: all 0.8s ease;
-  /* Transparent background so page gradient shows through */
-  background: transparent;
+  background: transparent; /* page gradient shows through */
 }
 
 .section.show { opacity: 1; transform: translateY(0); }
