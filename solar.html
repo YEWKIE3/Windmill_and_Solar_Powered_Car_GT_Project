@@ -6,22 +6,13 @@
 <title>Solar Powered Car</title>
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+html { scroll-behavior: smooth; }
 
-/* Smooth scroll */
-html {
-    scroll-behavior: smooth;
-}
-
-/* BODY – Balanced Sunset Gradient */
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
     background: linear-gradient(180deg, #FFB347 0%, #FF9966 40%, #F67280 100%);
-    color: #2b2b2b;
+    color: white;
     overflow-x: hidden;
 }
 
@@ -30,18 +21,18 @@ nav {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(10px);
+    background: rgba(0,0,0,0.3);
     padding: 15px 50px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 1000;
+    z-index: 1001;
+    backdrop-filter: blur(10px);
 }
 
 nav h2 {
-    color: white;
     font-weight: bold;
+    color: white;
 }
 
 nav ul {
@@ -58,41 +49,77 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    color: #ffe9c7;
+    color: #FFD700;
 }
 
-/* HERO SECTION */
+/* HERO */
 .hero {
     height: 100vh;
-    background: linear-gradient(to right, rgba(255,140,0,0.8), rgba(255,94,77,0.8));
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    color: white;
-    padding: 20px;
+    background: linear-gradient(to right, rgba(255,140,0,0.8), rgba(255,94,77,0.8));
+    position: relative;
+    overflow: hidden;
 }
 
 .hero h1 {
-    font-size: 3rem;
-    margin-bottom: 20px;
+    font-size: 4em;
+    z-index: 2;
+    position: relative;
+    animation: fadeIn 2s ease-in-out;
+    line-height: 1.2;
 }
 
 .hero p {
-    font-size: 1.2rem;
-    max-width: 700px;
+    font-size: 1.3em;
+    margin-top: 20px;
+    color: #FFD700;
+    z-index: 2;
+    position: relative;
+    animation: fadeIn 3s ease-in-out;
 }
 
-/* SECTION STYLING */
+/* PARTICLES */
+.hero .circle {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    background: #FFD700;
+    box-shadow: 0 0 10px rgba(255,215,0,0.5);
+    opacity: 0.3;
+    animation-name: floatUp;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+@keyframes floatUp {
+    0% { bottom: 0; }
+    100% { bottom: 100%; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* SECTIONS */
 .section {
     padding: 100px 10%;
     text-align: center;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease;
 }
 
+.section.show { opacity: 1; transform: translateY(0); }
+
 .section h2 {
-    font-size: 2.2rem;
-    margin-bottom: 20px;
-    color: #ffffff;
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    color: #FFD700;
 }
 
 /* CARDS */
@@ -110,14 +137,16 @@ nav ul li a:hover {
     padding: 30px;
     border-radius: 15px;
     width: 300px;
-    transition: 0.3s;
+    transition: 0.4s;
     color: white;
+    text-align: left;
 }
 
 .card:hover {
-    transform: translateY(-10px);
-    background: #FFD700; /* Surprise pop color */
+    transform: scale(1.02);
+    background: #FFD700;
     color: #2b2b2b;
+    box-shadow: 0 0 30px rgba(255,215,0,0.5);
 }
 
 /* FOOTER */
@@ -128,15 +157,21 @@ footer {
     color: white;
 }
 
+/* RESPONSIVE */
 @media(max-width: 768px){
-    .hero h1 {
-        font-size: 2.2rem;
-    }
+    .hero h1 { font-size: 8vw; }
+    .hero p { font-size: 4vw; }
+    .section h2 { font-size: 7vw; }
+    .section { padding: 8vw 5%; }
+    .card { padding: 4vw; width: 90%; }
+    nav a { margin: 0 10px; font-size: 4vw; }
+}
 
-    .card-container {
-        flex-direction: column;
-        align-items: center;
-    }
+@media(max-width: 480px){
+    .hero h1 { font-size: 10vw; }
+    .hero p { font-size: 5vw; }
+    .section h2 { font-size: 9vw; }
+    nav a { font-size: 5vw; }
 }
 </style>
 </head>
@@ -146,26 +181,26 @@ footer {
 <nav>
     <h2>Solar Project</h2>
     <ul>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#design">Design</a></li>
+        <li><a href="#testing">Testing</a></li>
         <li><a href="index.html">Windmill</a></li>
-        <li><a href="solar.html">Solar Car</a></li>
     </ul>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-    <div>
-        <h1>Solar Powered Engineering</h1>
-        <p>Harnessing the power of sunlight to drive innovation, efficiency, and sustainable transportation.</p>
-    </div>
+    <h1>Solar Powered Engineering</h1>
+    <p>Harnessing sunlight for sustainable transportation</p>
 </section>
 
 <!-- PROJECT OVERVIEW -->
-<section class="section">
+<section id="overview" class="section">
     <h2>Project Overview</h2>
     <div class="card-container">
         <div class="card">
             <p>
-                Our solar powered car converts sunlight directly into electrical energy using a photovoltaic solar panel system. 
+                Our solar powered car converts sunlight directly into electrical energy using photovoltaic panels. 
                 The generated energy powers a DC motor that drives the vehicle forward.
             </p>
         </div>
@@ -173,26 +208,25 @@ footer {
 </section>
 
 <!-- ENGINEERING DESIGN -->
-<section class="section">
+<section id="design" class="section">
     <h2>Engineering Design</h2>
     <div class="card-container">
         <div class="card">
             <p>
-                We are testing different gear ratios, motor configurations, and panel placements to maximize speed and efficiency. 
-                Structural balance and weight distribution are also critical to maintaining optimal performance.
+                We test gear ratios, motor configurations, and panel placements to maximize speed and efficiency. 
+                Structural balance and weight distribution are key for optimal performance.
             </p>
         </div>
     </div>
 </section>
 
 <!-- TESTING -->
-<section class="section">
+<section id="testing" class="section">
     <h2>Testing & Performance</h2>
     <div class="card-container">
         <div class="card">
             <p>
-                Performance is measured by analyzing speed, torque, and energy output under varying sunlight intensities 
-                to determine efficiency improvements.
+                Performance is measured by analyzing speed, torque, and energy output under varying sunlight intensities to improve efficiency.
             </p>
         </div>
     </div>
@@ -201,6 +235,38 @@ footer {
 <footer>
     Solar Powered Car Engineering Project © 2026
 </footer>
+
+<script>
+window.scrollTo(0,0);
+
+/* SECTION SCROLL ANIMATION */
+const sections = document.querySelectorAll('.section');
+window.addEventListener('scroll', ()=>{
+    sections.forEach(section=>{
+        if(section.getBoundingClientRect().top < window.innerHeight*0.85){
+            section.classList.add('show');
+        }
+    });
+});
+
+/* HERO PARTICLES */
+window.onload = function() {
+    const hero = document.querySelector('.hero');
+    const numParticles = 30;
+    for (let i = 0; i < numParticles; i++) {
+        const circle = document.createElement('div');
+        circle.classList.add('circle');
+        circle.style.left = Math.random() * 100 + 'vw';
+        circle.style.bottom = '0';
+        const size = Math.random() * 15 + 5;
+        circle.style.width = size + 'px';
+        circle.style.height = size + 'px';
+        circle.style.animationDuration = (Math.random() * 8 + 6) + 's';
+        circle.style.opacity = Math.random() * 0.5 + 0.2;
+        hero.appendChild(circle);
+    }
+};
+</script>
 
 </body>
 </html>
