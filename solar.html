@@ -5,19 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
+html { scroll-behavior: smooth; }
+
 html, body {
   margin: 0;
   padding: 0;
-  overflow-x: hidden; /* PREVENT LEFT/RIGHT SCROLL */
+  overflow-x: hidden;
   font-family: 'Segoe UI', sans-serif;
-  background: #0f172a;
+  background: #1a0f0a;
   color: white;
 }
 
+/* NAVBAR */
 nav {
   position: fixed;
   width: 100%;
-  background: rgba(15, 23, 42, 0.9);
+  background: rgba(26, 15, 10, 0.9);
   padding: 15px;
   text-align: center;
   backdrop-filter: blur(10px);
@@ -33,22 +36,77 @@ nav a {
 }
 
 nav a:hover {
-  color: #38bdf8;
+  color: #ff9e00;
 }
 
+/* HERO SECTION */
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: linear-gradient(to bottom, #2b1408, #7a2e00, #ff6a00);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero h1 {
+  font-size: 4em;
+  z-index: 2;
+  position: relative;
+  animation: fadeIn 2s ease-in-out;
+  line-height: 1.2;
+  color: #fff4d6;
+}
+
+.hero p {
+  font-size: 1.3em;
+  margin-top: 20px;
+  color: #ffe0a3;
+  z-index: 2;
+  position: relative;
+  animation: fadeIn 3s ease-in-out;
+}
+
+/* SUN PARTICLES */
+.hero .circle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  background: #ffae00;
+  box-shadow: 0 0 20px rgba(255,174,0,0.8);
+  opacity: 0.4;
+  animation-name: floatUp;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes floatUp {
+  0% { bottom: 0; }
+  100% { bottom: 100%; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* SECTIONS */
 .section {
-  padding: 140px 10% 100px;
+  padding: 100px 10%;
   text-align: center;
 }
 
-.section h1 {
-  font-size: 3em;
-  color: #38bdf8;
-  margin-bottom: 40px;
+.section h2 {
+  font-size: 2.5em;
+  margin-bottom: 30px;
+  color: #ff9e00;
 }
 
 .card {
-  background: #1e293b;
+  background: #2b1408;
   padding: 30px;
   margin: 20px auto;
   border-radius: 15px;
@@ -59,23 +117,26 @@ nav a:hover {
 
 .card:hover {
   transform: scale(1.02);
-  box-shadow: 0 0 30px rgba(56,189,248,0.4);
+  box-shadow: 0 0 30px rgba(255,158,0,0.6);
 }
 
 footer {
   text-align: center;
   padding: 40px;
-  background: #020617;
+  background: #140805;
 }
 
 /* RESPONSIVE */
 @media(max-width: 768px){
-  .section h1 { font-size: 7vw; }
+  .hero h1 { font-size: 8vw; }
+  .hero p { font-size: 4vw; }
+  .section h2 { font-size: 7vw; }
   nav a { margin: 0 10px; font-size: 4vw; }
 }
 
 @media(max-width: 480px){
-  .section h1 { font-size: 9vw; }
+  .hero h1 { font-size: 10vw; }
+  .hero p { font-size: 5vw; }
   nav a { font-size: 5vw; }
 }
 </style>
@@ -88,43 +149,66 @@ footer {
   <a href="solar.html">Solar Powered Car</a>
 </nav>
 
-<div class="section">
+<div class="hero">
   <h1>Solar Powered Car Project</h1>
+  <p>Harnessing the Power of the Sun</p>
+</div>
 
+<div class="section">
+  <h2>Project Overview</h2>
   <div class="card">
-    <h2>Project Overview</h2>
     <p>
-      Our solar powered car converts sunlight into electrical energy using a
-      solar panel. The energy powers a DC motor that drives the wheels.
-      This project explores renewable transportation and sustainable engineering design.
+      Our solar powered car converts sunlight directly into electrical energy
+      using a photovoltaic solar panel system. The generated energy powers a DC motor
+      that drives the vehicle forward.
     </p>
   </div>
+</div>
 
+<div class="section">
+  <h2>Engineering Design</h2>
   <div class="card">
-    <h2>Engineering Design</h2>
     <p>
-      We are testing different gear ratios, motor configurations,
-      and solar panel placements to maximize speed and efficiency.
-      Weight distribution and friction reduction are also key design considerations.
+      We are testing different gear ratios, motor configurations, and panel
+      placements to maximize speed and efficiency. Structural balance and
+      weight distribution are also critical to maintaining optimal performance.
     </p>
   </div>
+</div>
 
+<div class="section">
+  <h2>Testing & Performance</h2>
   <div class="card">
-    <h2>Testing & Performance</h2>
     <p>
-      Performance is evaluated by measuring speed, torque,
-      and energy output under various sunlight conditions.
-      These tests help us optimize the system for real-world efficiency.
+      Performance is measured by analyzing speed, torque, and energy output
+      under varying sunlight intensities to determine efficiency improvements.
     </p>
   </div>
 </div>
 
 <footer>
   <p>Engineering Project 2026</p>
-  <p style="opacity: 0.7; font-size: 0.9em;">
-    Created by Miguel Mendez, Alan Najera, Chau Duy, and Luis Zepeda
-  </p>
 </footer>
+
+<script>
+window.onload = function() {
+  const hero = document.querySelector('.hero');
+  const numParticles = 35;
+
+  for (let i = 0; i < numParticles; i++) {
+    const circle = document.createElement('div');
+    circle.classList.add('circle');
+    circle.style.left = Math.random() * 100 + 'vw';
+    circle.style.bottom = '0';
+    const size = Math.random() * 20 + 8;
+    circle.style.width = size + 'px';
+    circle.style.height = size + 'px';
+    circle.style.animationDuration = (Math.random() * 6 + 5) + 's';
+    circle.style.opacity = Math.random() * 0.5 + 0.3;
+    hero.appendChild(circle);
+  }
+};
+</script>
 
 </body>
 </html>
