@@ -10,41 +10,33 @@ html { scroll-behavior: smooth; }
 
 body {
     margin: 0;
-    font-family: 'Segoe UI', sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
+    /* background gradient from dark orange to light pinkish */
     background: linear-gradient(180deg, #FFB347 0%, #FF9966 40%, #F67280 100%);
     color: white;
     overflow-x: hidden;
 }
 
 /* NAVBAR */
-nav {
-    position: fixed;
-    width: 100%;
-    background: rgba(255,140,0,0.9); /* Solar theme */
-    padding: 15px;
-    text-align: center; /* Centered links */
-    z-index: 1001;
-    backdrop-filter: blur(10px);
+nav {								
+  position: fixed;
+  width: 100%;
+  background: rgba(15, 23, 42, 0.9);
+  padding: 15px;
+  text-align: center;
+  z-index: 1001;
+  backdrop-filter: blur(10px);
 }
 
-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: inline-flex;
-    gap: 30px;
-}
-
-nav ul li a {
-    text-decoration: none;
+nav a {
     color: white;
+    margin: 0 20px;
+    text-decoration: none;
     font-weight: bold;
     transition: 0.3s;
 }
 
-nav ul li a:hover {
-    color: #FFD700;
-}
+nav a:hover { color: #38bdf8; }
 
 /* HERO */
 .hero {
@@ -54,7 +46,7 @@ nav ul li a:hover {
     justify-content: center;
     align-items: center;
     text-align: center;
-    background: linear-gradient(to right, rgba(255,140,0,0.8), rgba(255,94,77,0.8));
+    background: linear-gradient(to bottom, #0f172a, #1e293b);
     position: relative;
     overflow: hidden;
 }
@@ -70,7 +62,7 @@ nav ul li a:hover {
 .hero p {
     font-size: 1.3em;
     margin-top: 20px;
-    color: #FFD700;
+    color: #38bdf8;
     z-index: 2;
     position: relative;
     animation: fadeIn 3s ease-in-out;
@@ -81,8 +73,8 @@ nav ul li a:hover {
     position: absolute;
     border-radius: 50%;
     pointer-events: none;
-    background: #FFD700;
-    box-shadow: 0 0 10px rgba(255,215,0,0.5);
+    background: #38bdf8;
+    box-shadow: 0 0 10px rgba(56,189,248,0.5);
     opacity: 0.3;
     animation-name: floatUp;
     animation-timing-function: linear;
@@ -113,35 +105,32 @@ nav ul li a:hover {
 .section h2 {
     font-size: 2.5em;
     margin-bottom: 30px;
-    color: #FFD700;
-    text-align: center;
+    color: white;
 }
 
-/* CARDS */
 .card-container {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
     margin-top: 40px;
 }
 
 .card {
-    background: rgba(255,255,255,0.2);
+    background: rgba(30,41,59,0.7);
     backdrop-filter: blur(10px);
     padding: 30px;
     border-radius: 15px;
+    width: 100%;
     max-width: 900px;
-    margin: 20px 0;
-    text-align: left;
-    transition: 0.4s;
+    transition: 0.3s;
     color: white;
+    text-align: left;
 }
 
 .card:hover {
     transform: scale(1.02);
-    background: #FFD700;
-    color: #2b2b2b;
-    box-shadow: 0 0 30px rgba(255,215,0,0.5);
+    box-shadow: 0 0 30px rgba(56,189,248,0.4);
 }
 
 /* FOOTER */
@@ -158,17 +147,15 @@ footer {
     .hero p { font-size: 4vw; }
     .section h2 { font-size: 7vw; }
     .section { padding: 8vw 5%; }
-    .card { padding: 4vw; width: 90%; }
-    nav ul { gap: 15px; }
-    nav ul li a { font-size: 4vw; }
+    .card { padding: 4vw; }
+    nav a { margin: 0 10px; font-size: 4vw; }
 }
 
 @media(max-width: 480px){
     .hero h1 { font-size: 10vw; }
     .hero p { font-size: 5vw; }
     .section h2 { font-size: 9vw; }
-    nav ul { gap: 10px; }
-    nav ul li a { font-size: 5vw; }
+    nav a { font-size: 5vw; }
 }
 </style>
 </head>
@@ -176,55 +163,53 @@ footer {
 <body>
 
 <nav>
-    <ul>
-        <li><a href="#overview">Overview</a></li>
-        <li><a href="#design">Design</a></li>
-        <li><a href="#testing">Testing</a></li>
-        <li><a href="index.html">Windmill</a></li>
-    </ul>
+    <a href="#overview">Overview</a>
+    <a href="#design">Design</a>
+    <a href="#testing">Testing</a>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-    <h1>Solar Powered Engineering</h1>
-    <p>Harnessing sunlight for sustainable transportation</p>
+    <div>
+        <h1>Solar Powered Engineering</h1>
+        <p>Harnessing the power of sunlight to drive innovation, efficiency, and sustainable transportation.</p>
+    </div>
 </section>
 
 <!-- PROJECT OVERVIEW -->
 <section id="overview" class="section">
     <h2>Project Overview</h2>
-    <div class="card-container">
-        <div class="card">
-            <p>
-                Our solar powered car converts sunlight directly into electrical energy using photovoltaic panels. 
-                The generated energy powers a DC motor that drives the vehicle forward.
-            </p>
-        </div>
+    <div class="card">
+        <p>
+            Our solar car project focuses on designing and building a small-scale vehicle powered entirely by solar energy. 
+            The car converts sunlight into electrical energy using photovoltaic panels, which then supply power to a DC motor to drive the vehicle forward. 
+            The goal is to explore renewable energy solutions while applying real-world engineering principles such as energy conversion, motor efficiency, material selection, and overall vehicle performance.
+        </p>
+        <p>
+            Through research, testing, and iteration, we are analyzing how solar panel placement, panel efficiency, motor specifications, and weight distribution affect the car’s speed and energy output. 
+            This project demonstrates how sustainable energy systems can be engineered to reduce reliance on fossil fuels and promote cleaner, more efficient transportation alternatives.
+        </p>
     </div>
 </section>
 
 <!-- ENGINEERING DESIGN -->
 <section id="design" class="section">
     <h2>Engineering Design</h2>
-    <div class="card-container">
-        <div class="card">
-            <p>
-                We test gear ratios, motor configurations, and panel placements to maximize speed and efficiency. 
-                Structural balance and weight distribution are key for optimal performance.
-            </p>
-        </div>
+    <div class="card">
+        <p>
+            We are testing different gear ratios, motor configurations, and panel placements to maximize speed and efficiency. 
+            Structural balance and weight distribution are also critical to maintaining optimal performance.
+        </p>
     </div>
 </section>
 
 <!-- TESTING -->
 <section id="testing" class="section">
     <h2>Testing & Performance</h2>
-    <div class="card-container">
-        <div class="card">
-            <p>
-                Performance is measured by analyzing speed, torque, and energy output under varying sunlight intensities to improve efficiency.
-            </p>
-        </div>
+    <div class="card">
+        <p>
+            Performance is measured by analyzing speed, torque, and energy output under varying sunlight intensities to determine efficiency improvements.
+        </p>
     </div>
 </section>
 
@@ -235,7 +220,6 @@ footer {
 <script>
 window.scrollTo(0,0);
 
-/* SECTION SCROLL ANIMATION */
 const sections = document.querySelectorAll('.section');
 window.addEventListener('scroll', ()=>{
     sections.forEach(section=>{
@@ -245,7 +229,6 @@ window.addEventListener('scroll', ()=>{
     });
 });
 
-/* HERO PARTICLES */
 window.onload = function() {
     const hero = document.querySelector('.hero');
     const numParticles = 30;
