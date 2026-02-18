@@ -19,26 +19,27 @@ body {
 /* NAVBAR */
 nav {
     position: fixed;
-    top: 0;
     width: 100%;
-    background: rgba(0,0,0,0.3);
-    padding: 15px 50px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    background: rgba(0,0,0,0.9);
+    padding: 15px;
+    text-align: center; /* Centered links like windmill */
     z-index: 1001;
     backdrop-filter: blur(10px);
 }
 
 nav h2 {
+    display: block;
     font-weight: bold;
     color: white;
+    margin-bottom: 10px;
 }
 
 nav ul {
     list-style: none;
-    display: flex;
-    gap: 25px;
+    padding: 0;
+    margin: 0;
+    display: inline-flex;
+    gap: 30px;
 }
 
 nav ul li a {
@@ -120,7 +121,7 @@ nav ul li a:hover {
     font-size: 2.5em;
     margin-bottom: 30px;
     color: #FFD700;
-    text-align: center; /* centered like windmill */
+    text-align: center;
 }
 
 /* CARDS */
@@ -136,7 +137,7 @@ nav ul li a:hover {
     backdrop-filter: blur(10px);
     padding: 30px;
     border-radius: 15px;
-    max-width: 900px; /* same as windmill */
+    max-width: 900px;
     margin: 20px 0;
     text-align: left;
     transition: 0.4s;
@@ -165,14 +166,16 @@ footer {
     .section h2 { font-size: 7vw; }
     .section { padding: 8vw 5%; }
     .card { padding: 4vw; width: 90%; }
-    nav a { margin: 0 10px; font-size: 4vw; }
+    nav ul { gap: 15px; }
+    nav ul li a { font-size: 4vw; }
 }
 
 @media(max-width: 480px){
     .hero h1 { font-size: 10vw; }
     .hero p { font-size: 5vw; }
     .section h2 { font-size: 9vw; }
-    nav a { font-size: 5vw; }
+    nav ul { gap: 10px; }
+    nav ul li a { font-size: 5vw; }
 }
 </style>
 </head>
