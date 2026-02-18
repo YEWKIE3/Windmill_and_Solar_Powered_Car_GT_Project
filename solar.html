@@ -12,15 +12,22 @@ html, body {
   padding: 0;
   overflow-x: hidden;
   font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(to bottom, #2b1408, #7a2e00, #ff6a00);
-  color: white;
+  background: linear-gradient(
+    to bottom,
+    #1a0f0a 0%,
+    #2e1208 25%,
+    #4a1d0a 50%,
+    #7a2e00 75%,
+    #2b0d05 100%
+  );
+  color: #fff8e6;
 }
 
 /* NAVBAR */
 nav {
   position: fixed;
   width: 100%;
-  background: rgba(43, 20, 8, 0.9);
+  background: rgba(26, 15, 10, 0.85);
   padding: 15px;
   text-align: center;
   backdrop-filter: blur(10px);
@@ -28,7 +35,7 @@ nav {
 }
 
 nav a {
-  color: white;
+  color: #fff8e6;
   margin: 0 20px;
   text-decoration: none;
   font-weight: bold;
@@ -36,10 +43,10 @@ nav a {
 }
 
 nav a:hover {
-  color: #ffe0a3;
+  color: #ffb347;
 }
 
-/* HERO SECTION */
+/* HERO */
 .hero {
   height: 100vh;
   display: flex;
@@ -54,17 +61,15 @@ nav a:hover {
 .hero h1 {
   font-size: 4em;
   z-index: 2;
-  position: relative;
   animation: fadeIn 2s ease-in-out;
-  color: #fff4d6;
+  color: #ffe6b3;
 }
 
 .hero p {
   font-size: 1.3em;
   margin-top: 20px;
-  color: #ffe0a3;
+  color: #ffb347;
   z-index: 2;
-  position: relative;
   animation: fadeIn 3s ease-in-out;
 }
 
@@ -73,9 +78,9 @@ nav a:hover {
   position: absolute;
   border-radius: 50%;
   pointer-events: none;
-  background: #ffae00;
-  box-shadow: 0 0 25px rgba(255,174,0,0.9);
-  opacity: 0.4;
+  background: #ff9e00;
+  box-shadow: 0 0 30px rgba(255, 158, 0, 0.8);
+  opacity: 0.3;
   animation-name: floatUp;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
@@ -100,25 +105,25 @@ nav a:hover {
 .section h2 {
   font-size: 2.5em;
   margin-bottom: 30px;
-  color: #fff4d6;
+  color: #ffb347;
 }
 
-/* SUNSET CARDS */
+/* CARDS */
 .card {
-  background: linear-gradient(135deg, #7a2e00, #ff6a00);
+  background: rgba(122, 46, 0, 0.35);
+  backdrop-filter: blur(8px);
   padding: 30px;
   margin: 20px auto;
   border-radius: 20px;
   max-width: 900px;
   text-align: left;
   transition: 0.4s;
-  box-shadow: 0 0 25px rgba(255, 140, 0, 0.4);
-  color: #fff8e6;
+  box-shadow: 0 0 20px rgba(255, 140, 0, 0.3);
 }
 
 .card:hover {
   transform: scale(1.03);
-  box-shadow: 0 0 45px rgba(255, 200, 0, 0.8);
+  box-shadow: 0 0 40px rgba(255, 180, 0, 0.7);
 }
 
 footer {
@@ -160,8 +165,8 @@ footer {
   <h2>Project Overview</h2>
   <div class="card">
     <p>
-      Our solar powered car converts sunlight directly into electrical energy using a
-      photovoltaic solar panel system. The generated energy powers a DC motor that drives the vehicle forward.
+      Our solar powered car converts sunlight directly into electrical energy using a photovoltaic solar panel system. 
+      The generated energy powers a DC motor that drives the vehicle forward.
     </p>
   </div>
 </div>
@@ -170,7 +175,7 @@ footer {
   <h2>Engineering Design</h2>
   <div class="card">
     <p>
-      We are testing different gear ratios, motor configurations, and panel placements to maximize speed and efficiency.
+      We are testing different gear ratios, motor configurations, and panel placements to maximize speed and efficiency. 
       Structural balance and weight distribution are also critical to maintaining optimal performance.
     </p>
   </div>
@@ -195,18 +200,18 @@ footer {
 <script>
 window.onload = function() {
   const hero = document.querySelector('.hero');
-  const numParticles = 35;
+  const numParticles = 30;
 
   for (let i = 0; i < numParticles; i++) {
     const circle = document.createElement('div');
     circle.classList.add('circle');
     circle.style.left = Math.random() * 100 + 'vw';
     circle.style.bottom = '0';
-    const size = Math.random() * 20 + 8;
+    const size = Math.random() * 18 + 6;
     circle.style.width = size + 'px';
     circle.style.height = size + 'px';
-    circle.style.animationDuration = (Math.random() * 6 + 5) + 's';
-    circle.style.opacity = Math.random() * 0.5 + 0.3;
+    circle.style.animationDuration = (Math.random() * 6 + 6) + 's';
+    circle.style.opacity = Math.random() * 0.4 + 0.2;
     hero.appendChild(circle);
   }
 };
