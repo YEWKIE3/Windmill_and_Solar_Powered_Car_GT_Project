@@ -45,49 +45,20 @@ nav a:hover { color: #38bdf8; }
     justify-content: center;
     align-items: center;
     text-align: center;
-    background: linear-gradient(to bottom, #0f172a, #1e293b);
+    background: linear-gradient(to right, rgba(255,140,0,0.6), rgba(255,94,77,0.6));
     position: relative;
     overflow: hidden;
+    padding: 20px;
 }
 
 .hero h1 {
-    font-size: 4em;
-    z-index: 2;
-    position: relative;
-    animation: fadeIn 2s ease-in-out;
-    line-height: 1.2;
+    font-size: 3rem;
+    margin-bottom: 20px;
 }
 
 .hero p {
-    font-size: 1.3em;
-    margin-top: 20px;
-    color: #38bdf8;
-    z-index: 2;
-    position: relative;
-    animation: fadeIn 3s ease-in-out;
-}
-
-/* PARTICLES */
-.hero .circle {
-    position: absolute;
-    border-radius: 50%;
-    pointer-events: none;
-    background: #38bdf8;
-    box-shadow: 0 0 10px rgba(56,189,248,0.5);
-    opacity: 0.3;
-    animation-name: floatUp;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-}
-
-@keyframes floatUp {
-    0% { bottom: 0; }
-    100% { bottom: 100%; }
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(40px); }
-    to { opacity: 1; transform: translateY(0); }
+    font-size: 1.2rem;
+    max-width: 700px;
 }
 
 /* SECTIONS */
@@ -143,8 +114,8 @@ footer {
 
 /* RESPONSIVE */
 @media(max-width: 768px){
-    .hero h1 { font-size: 8vw; }
-    .hero p { font-size: 4vw; }
+    .hero h1 { font-size: 2.2rem; }
+    .hero p { font-size: 1rem; }
     .section h2 { font-size: 7vw; }
     .section { padding: 8vw 5%; }
     .card { padding: 4vw; }
@@ -163,6 +134,7 @@ footer {
 <body>
 
 <nav>
+    <a href="windmill.html">Windmill Project</a>
     <a href="#overview">Overview</a>
     <a href="#design">Design</a>
     <a href="#testing">Testing</a>
@@ -228,23 +200,6 @@ window.addEventListener('scroll', ()=>{
         }
     });
 });
-
-window.onload = function() {
-    const hero = document.querySelector('.hero');
-    const numParticles = 30;
-    for (let i = 0; i < numParticles; i++) {
-        const circle = document.createElement('div');
-        circle.classList.add('circle');
-        circle.style.left = Math.random() * 100 + 'vw';
-        circle.style.bottom = '0';
-        const size = Math.random() * 15 + 5;
-        circle.style.width = size + 'px';
-        circle.style.height = size + 'px';
-        circle.style.animationDuration = (Math.random() * 8 + 6) + 's';
-        circle.style.opacity = Math.random() * 0.5 + 0.2;
-        hero.appendChild(circle);
-    }
-};
 </script>
 
 </body>
