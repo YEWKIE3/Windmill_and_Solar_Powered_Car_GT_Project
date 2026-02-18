@@ -12,7 +12,7 @@ html, body {
   padding: 0;
   overflow-x: hidden;
   font-family: 'Segoe UI', sans-serif;
-  background: #1a0f0a;
+  background: linear-gradient(to bottom, #2b1408, #7a2e00, #ff6a00);
   color: white;
 }
 
@@ -20,7 +20,7 @@ html, body {
 nav {
   position: fixed;
   width: 100%;
-  background: rgba(26, 15, 10, 0.9);
+  background: rgba(43, 20, 8, 0.9);
   padding: 15px;
   text-align: center;
   backdrop-filter: blur(10px);
@@ -36,7 +36,7 @@ nav a {
 }
 
 nav a:hover {
-  color: #ff9e00;
+  color: #ffe0a3;
 }
 
 /* HERO SECTION */
@@ -47,7 +47,6 @@ nav a:hover {
   justify-content: center;
   align-items: center;
   text-align: center;
-  background: linear-gradient(to bottom, #2b1408, #7a2e00, #ff6a00);
   position: relative;
   overflow: hidden;
 }
@@ -57,7 +56,6 @@ nav a:hover {
   z-index: 2;
   position: relative;
   animation: fadeIn 2s ease-in-out;
-  line-height: 1.2;
   color: #fff4d6;
 }
 
@@ -76,7 +74,7 @@ nav a:hover {
   border-radius: 50%;
   pointer-events: none;
   background: #ffae00;
-  box-shadow: 0 0 20px rgba(255,174,0,0.8);
+  box-shadow: 0 0 25px rgba(255,174,0,0.9);
   opacity: 0.4;
   animation-name: floatUp;
   animation-timing-function: linear;
@@ -102,28 +100,32 @@ nav a:hover {
 .section h2 {
   font-size: 2.5em;
   margin-bottom: 30px;
-  color: #ff9e00;
+  color: #fff4d6;
 }
 
+/* SUNSET CARDS */
 .card {
-  background: #2b1408;
+  background: linear-gradient(135deg, #7a2e00, #ff6a00);
   padding: 30px;
   margin: 20px auto;
-  border-radius: 15px;
+  border-radius: 20px;
   max-width: 900px;
   text-align: left;
   transition: 0.4s;
+  box-shadow: 0 0 25px rgba(255, 140, 0, 0.4);
+  color: #fff8e6;
 }
 
 .card:hover {
-  transform: scale(1.02);
-  box-shadow: 0 0 30px rgba(255,158,0,0.6);
+  transform: scale(1.03);
+  box-shadow: 0 0 45px rgba(255, 200, 0, 0.8);
 }
 
 footer {
   text-align: center;
   padding: 40px;
-  background: #140805;
+  background: rgba(20, 8, 5, 0.9);
+  margin-top: 50px;
 }
 
 /* RESPONSIVE */
@@ -158,9 +160,8 @@ footer {
   <h2>Project Overview</h2>
   <div class="card">
     <p>
-      Our solar powered car converts sunlight directly into electrical energy
-      using a photovoltaic solar panel system. The generated energy powers a DC motor
-      that drives the vehicle forward.
+      Our solar powered car converts sunlight directly into electrical energy using a
+      photovoltaic solar panel system. The generated energy powers a DC motor that drives the vehicle forward.
     </p>
   </div>
 </div>
@@ -169,9 +170,8 @@ footer {
   <h2>Engineering Design</h2>
   <div class="card">
     <p>
-      We are testing different gear ratios, motor configurations, and panel
-      placements to maximize speed and efficiency. Structural balance and
-      weight distribution are also critical to maintaining optimal performance.
+      We are testing different gear ratios, motor configurations, and panel placements to maximize speed and efficiency.
+      Structural balance and weight distribution are also critical to maintaining optimal performance.
     </p>
   </div>
 </div>
@@ -180,14 +180,16 @@ footer {
   <h2>Testing & Performance</h2>
   <div class="card">
     <p>
-      Performance is measured by analyzing speed, torque, and energy output
-      under varying sunlight intensities to determine efficiency improvements.
+      Performance is measured by analyzing speed, torque, and energy output under varying sunlight intensities to determine efficiency improvements.
     </p>
   </div>
 </div>
 
 <footer>
   <p>Engineering Project 2026</p>
+  <p style="opacity: 0.8; font-size: 0.9em;">
+    Created by Miguel Mendez, Alan Najera, Chau Duy, and Luis Zepeda
+  </p>
 </footer>
 
 <script>
