@@ -1,103 +1,129 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Solar Powered Car Project</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: #0f172a;
-      color: white;
-    }
+<title>Solar Powered Car</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    nav {
-      width: 100%;
-      background: rgba(15, 23, 42, 0.9);
-      padding: 15px;
-      text-align: center;
-    }
+<style>
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* PREVENT LEFT/RIGHT SCROLL */
+  font-family: 'Segoe UI', sans-serif;
+  background: #0f172a;
+  color: white;
+}
 
-    nav a {
-      color: white;
-      margin: 0 20px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: 0.3s;
-    }
+nav {
+  position: fixed;
+  width: 100%;
+  background: rgba(15, 23, 42, 0.9);
+  padding: 15px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+}
 
-    nav a:hover { color: #38bdf8; }
+nav a {
+  color: white;
+  margin: 0 20px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
 
-    .hero {
-      padding: 120px 10% 60px;
-      text-align: center;
-      background: linear-gradient(to bottom, #0f172a, #1e293b);
-    }
+nav a:hover {
+  color: #38bdf8;
+}
 
-    .hero h1 {
-      font-size: 3.5em;
-      color: #38bdf8;
-    }
+.section {
+  padding: 140px 10% 100px;
+  text-align: center;
+}
 
-    .section {
-      padding: 60px 10%;
-      text-align: center;
-    }
+.section h1 {
+  font-size: 3em;
+  color: #38bdf8;
+  margin-bottom: 40px;
+}
 
-    .card {
-      background: #1e293b;
-      padding: 30px;
-      margin: 20px auto;
-      border-radius: 15px;
-      max-width: 900px;
-      text-align: left;
-    }
+.card {
+  background: #1e293b;
+  padding: 30px;
+  margin: 20px auto;
+  border-radius: 15px;
+  max-width: 900px;
+  text-align: left;
+  transition: 0.4s;
+}
 
-    footer {
-      text-align: center;
-      padding: 40px;
-      background: #020617;
-    }
-  </style>
+.card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 30px rgba(56,189,248,0.4);
+}
+
+footer {
+  text-align: center;
+  padding: 40px;
+  background: #020617;
+}
+
+/* RESPONSIVE */
+@media(max-width: 768px){
+  .section h1 { font-size: 7vw; }
+  nav a { margin: 0 10px; font-size: 4vw; }
+}
+
+@media(max-width: 480px){
+  .section h1 { font-size: 9vw; }
+  nav a { font-size: 5vw; }
+}
+</style>
 </head>
 
 <body>
 
 <nav>
-  <a href="index.html">Windmill</a>
+  <a href="index.html">Windmill Project</a>
   <a href="solar.html">Solar Powered Car</a>
 </nav>
 
-<div class="hero">
-  <h1>Solar Powered Car Project</h1>
-  <p>Harnessing Solar Energy for Transportation</p>
-</div>
-
 <div class="section">
+  <h1>Solar Powered Car Project</h1>
+
   <div class="card">
     <h2>Project Overview</h2>
     <p>
-      Our solar powered car uses a solar panel to convert sunlight directly into electrical energy to power a motor. This project explores renewable transportation systems and sustainable vehicle engineering.
+      Our solar powered car converts sunlight into electrical energy using a
+      solar panel. The energy powers a DC motor that drives the wheels.
+      This project explores renewable transportation and sustainable engineering design.
     </p>
   </div>
 
   <div class="card">
     <h2>Engineering Design</h2>
     <p>
-      We are testing motor configurations, gear ratios, and panel placement to maximize speed and efficiency under various light conditions.
+      We are testing different gear ratios, motor configurations,
+      and solar panel placements to maximize speed and efficiency.
+      Weight distribution and friction reduction are also key design considerations.
     </p>
   </div>
 
   <div class="card">
     <h2>Testing & Performance</h2>
     <p>
-      Performance is measured by analyzing speed, torque, and energy output under different sunlight intensities.
+      Performance is evaluated by measuring speed, torque,
+      and energy output under various sunlight conditions.
+      These tests help us optimize the system for real-world efficiency.
     </p>
   </div>
 </div>
 
 <footer>
   <p>Engineering Project 2026</p>
+  <p style="opacity: 0.7; font-size: 0.9em;">
+    Created by Miguel Mendez, Alan Najera, Chau Duy, and Luis Zepeda
+  </p>
 </footer>
 
 </body>
