@@ -1,149 +1,145 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Solar Powered Car</title>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solar Powered Car</title>
 
 <style>
-html { scroll-behavior: smooth; }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-html, body {
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(
-    to bottom,
-    #2b1408 0%,
-    #5c220a 35%,
-    #b34700 65%,
-    #3a1608 100%
-  );
-  color: #fff6e6;
+/* Smooth scroll */
+html {
+    scroll-behavior: smooth;
+}
+
+/* BODY – Balanced Sunset Gradient */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(180deg, #FFB347 0%, #FF9966 40%, #F67280 100%);
+    color: #2b2b2b;
+    overflow-x: hidden;
 }
 
 /* NAVBAR */
 nav {
-  position: fixed;
-  width: 100%;
-  background: rgba(43, 20, 8, 0.85);
-  padding: 15px;
-  text-align: center;
-  backdrop-filter: blur(10px);
-  z-index: 1000;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    padding: 15px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
 }
 
-nav a {
-  color: #fff6e6;
-  margin: 0 20px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: 0.3s;
+nav h2 {
+    color: white;
+    font-weight: bold;
 }
 
-nav a:hover {
-  color: #ffd27f;
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
 }
 
-/* HERO */
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    color: #ffe9c7;
+}
+
+/* HERO SECTION */
 .hero {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
+    height: 100vh;
+    background: linear-gradient(to right, rgba(255,140,0,0.6), rgba(255,94,77,0.6)),
+                url("https://images.unsplash.com/photo-1509395176047-4a66953fd231") no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding: 20px;
 }
 
 .hero h1 {
-  font-size: 4em;
-  z-index: 2;
-  animation: fadeIn 2s ease-in-out;
-  color: #ffe0a3;
+    font-size: 3rem;
+    margin-bottom: 20px;
 }
 
 .hero p {
-  font-size: 1.3em;
-  margin-top: 20px;
-  color: #ffd27f;
-  z-index: 2;
-  animation: fadeIn 3s ease-in-out;
+    font-size: 1.2rem;
+    max-width: 700px;
 }
 
-/* SUN PARTICLES */
-.hero .circle {
-  position: absolute;
-  border-radius: 50%;
-  pointer-events: none;
-  background: #ffae00;
-  box-shadow: 0 0 25px rgba(255, 174, 0, 0.8);
-  opacity: 0.35;
-  animation-name: floatUp;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-}
-
-@keyframes floatUp {
-  0% { bottom: 0; }
-  100% { bottom: 100%; }
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(40px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* SECTIONS */
+/* SECTION STYLING */
 .section {
-  padding: 100px 10%;
-  text-align: center;
+    padding: 100px 10%;
+    text-align: center;
 }
 
 .section h2 {
-  font-size: 2.5em;
-  margin-bottom: 30px;
-  color: #ffd27f;
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.section p {
+    font-size: 1.1rem;
+    max-width: 800px;
+    margin: auto;
+    line-height: 1.6;
+    color: #fff8f0;
 }
 
 /* CARDS */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    margin-top: 40px;
+}
+
 .card {
-  background: rgba(255, 140, 0, 0.15);
-  backdrop-filter: blur(6px);
-  padding: 30px;
-  margin: 20px auto;
-  border-radius: 20px;
-  max-width: 900px;
-  text-align: left;
-  transition: 0.4s;
-  box-shadow: 0 0 20px rgba(255, 140, 0, 0.3);
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(10px);
+    padding: 30px;
+    border-radius: 15px;
+    width: 300px;
+    transition: 0.3s;
+    color: white;
 }
 
 .card:hover {
-  transform: scale(1.03);
-  box-shadow: 0 0 35px rgba(255, 180, 0, 0.7);
+    transform: translateY(-10px);
+    background: rgba(255,255,255,0.3);
 }
 
+/* FOOTER */
 footer {
-  text-align: center;
-  padding: 40px;
-  background: rgba(43, 20, 8, 0.85);
-  margin-top: 50px;
+    padding: 30px;
+    text-align: center;
+    background: rgba(0,0,0,0.15);
+    color: white;
 }
 
-/* RESPONSIVE */
 @media(max-width: 768px){
-  .hero h1 { font-size: 8vw; }
-  .hero p { font-size: 4vw; }
-  .section h2 { font-size: 7vw; }
-  nav a { margin: 0 10px; font-size: 4vw; }
-}
-
-@media(max-width: 480px){
-  .hero h1 { font-size: 10vw; }
-  .hero p { font-size: 5vw; }
-  nav a { font-size: 5vw; }
+    .hero h1 {
+        font-size: 2.2rem;
+    }
 }
 </style>
 </head>
@@ -151,70 +147,51 @@ footer {
 <body>
 
 <nav>
-  <a href="index.html">Windmill Project</a>
-  <a href="solar.html">Solar Powered Car</a>
+    <h2>Solar Project</h2>
+    <ul>
+        <li><a href="index.html">Windmill</a></li>
+        <li><a href="solar.html">Solar Car</a></li>
+    </ul>
 </nav>
 
-<div class="hero">
-  <h1>Solar Powered Car Project</h1>
-  <p>Harnessing the Power of the Sun</p>
-</div>
+<!-- HERO -->
+<section class="hero">
+    <div>
+        <h1>Solar Powered Engineering</h1>
+        <p>Harnessing the power of sunlight to drive innovation, efficiency, and sustainable transportation.</p>
+    </div>
+</section>
 
-<div class="section">
-  <h2>Project Overview</h2>
-  <div class="card">
+<!-- PROJECT OVERVIEW -->
+<section class="section">
+    <h2>Project Overview</h2>
     <p>
-      Our solar powered car converts sunlight directly into electrical energy using a photovoltaic solar panel system.
-      The generated energy powers a DC motor that drives the vehicle forward.
+        Our solar powered car converts sunlight directly into electrical energy using a photovoltaic solar panel system. 
+        The generated energy powers a DC motor that drives the vehicle forward.
     </p>
-  </div>
-</div>
+</section>
 
-<div class="section">
-  <h2>Engineering Design</h2>
-  <div class="card">
+<!-- ENGINEERING DESIGN -->
+<section class="section">
+    <h2>Engineering Design</h2>
     <p>
-      We are testing different gear ratios, motor configurations, and panel placements to maximize speed and efficiency.
-      Structural balance and weight distribution are also critical to maintaining optimal performance.
+        We are testing different gear ratios, motor configurations, and panel placements to maximize speed and efficiency. 
+        Structural balance and weight distribution are also critical to maintaining optimal performance.
     </p>
-  </div>
-</div>
+</section>
 
-<div class="section">
-  <h2>Testing & Performance</h2>
-  <div class="card">
+<!-- TESTING -->
+<section class="section">
+    <h2>Testing & Performance</h2>
     <p>
-      Performance is measured by analyzing speed, torque, and energy output under varying sunlight intensities to determine efficiency improvements.
+        Performance is measured by analyzing speed, torque, and energy output under varying sunlight intensities 
+        to determine efficiency improvements.
     </p>
-  </div>
-</div>
+</section>
 
 <footer>
-  <p>Engineering Project 2026</p>
-  <p style="opacity: 0.8; font-size: 0.9em;">
-    Created by Miguel Mendez, Alan Najera, Chau Duy, and Luis Zepeda
-  </p>
+    Solar Powered Car Engineering Project © 2026
 </footer>
-
-<script>
-window.onload = function() {
-  const hero = document.querySelector('.hero');
-  const numParticles = 30;
-
-  for (let i = 0; i < numParticles; i++) {
-    const circle = document.createElement('div');
-    circle.classList.add('circle');
-    circle.style.left = Math.random() * 100 + 'vw';
-    circle.style.bottom = '0';
-    const size = Math.random() * 18 + 6;
-    circle.style.width = size + 'px';
-    circle.style.height = size + 'px';
-    circle.style.animationDuration = (Math.random() * 6 + 6) + 's';
-    circle.style.opacity = Math.random() * 0.4 + 0.2;
-    hero.appendChild(circle);
-  }
-};
-</script>
 
 </body>
 </html>
