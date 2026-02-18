@@ -10,11 +10,13 @@ html { scroll-behavior: smooth; }
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: #0f172a;
+  /* Page background gradient for everything except hero */
+  background: linear-gradient(180deg, #1e3a8a 0%, #2563eb 100%);
   color: white;
   overflow-x: hidden;
 }
 
+/* NAVBAR */
 nav {
   position: fixed;
   width: 100%;
@@ -43,7 +45,7 @@ nav a:hover { color: #38bdf8; }
   justify-content: center;
   align-items: center;
   text-align: center;
-  background: linear-gradient(to bottom, #0f172a, #1e293b);
+  background: linear-gradient(to bottom, #0f172a, #1e293b); /* Original hero gradient */
   position: relative;
   overflow: hidden;
 }
@@ -95,6 +97,8 @@ nav a:hover { color: #38bdf8; }
   opacity: 0;
   transform: translateY(40px);
   transition: all 0.8s ease;
+  /* Transparent background so page gradient shows through */
+  background: transparent;
 }
 
 .section.show { opacity: 1; transform: translateY(0); }
@@ -106,7 +110,7 @@ nav a:hover { color: #38bdf8; }
 }
 
 .card {
-  background: #1e293b;
+  background: rgba(30, 41, 59, 0.7); /* semi-transparent so gradient shows through */
   padding: 30px;
   margin: 20px auto;
   border-radius: 15px;
@@ -129,7 +133,7 @@ video {
 footer {
   text-align: center;
   padding: 40px;
-  background: #020617;
+  background: rgba(0,0,0,0.2); /* slight transparency to show gradient */
 }
 
 /* RESPONSIVE */
@@ -160,7 +164,7 @@ footer {
   <a href="solar.html">Solar Powered Car</a>
 </nav>
 
-
+<!-- HERO -->
 <div class="hero">
   <h1>Windmill Engineering Project</h1>
   <p>Innovating Renewable Energy Through Design</p>
@@ -186,7 +190,6 @@ footer {
   </div>
 </div>
 
-
 <div id="design" class="section">
   <h2>Engineering Design</h2>
   <div class="card">
@@ -204,22 +207,16 @@ footer {
   </div>
 </div>
 
-
 <div id="progress" class="section">
   <h2>Project Testing Video</h2>
   <div class="card">
     <video width="100%" controls>
       <source src="copy_4BC7AB96-84F0-497A-9FC2-3589BDA1CE53.MOV" type="video/quicktime">
-      <track src="captions-en.vtt"
-             kind="subtitles"
-             srclang="en"
-             label="English"
-             default>
+      <track src="captions-en.vtt" kind="subtitles" srclang="en" label="English" default>
       Your browser does not support the video tag.
     </video>
   </div>
 </div>
-
 
 <footer>
   <p>Engineering Project 2026</p>
@@ -231,6 +228,7 @@ footer {
 <script>
 window.scrollTo(0,0);
 
+/* SECTION SCROLL ANIMATION */
 const sections = document.querySelectorAll('.section');
 window.addEventListener('scroll', ()=>{
   sections.forEach(section=>{
@@ -240,6 +238,7 @@ window.addEventListener('scroll', ()=>{
   });
 });
 
+/* HERO PARTICLES */
 window.onload = function() {
   const hero = document.querySelector('.hero');
   const numParticles = 30;
