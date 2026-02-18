@@ -64,7 +64,7 @@
       animation: fadeIn 3s ease-in-out;
     }
 
-    /* PARTICLES INSIDE HERO ONLY */
+    /* PARTICLES */
     .hero .circle {
       position: absolute;
       border-radius: 50%;
@@ -97,21 +97,32 @@
     }
 
     .section.show { opacity: 1; transform: translateY(0); }
-    .section h2 { font-size: 2.5em; margin-bottom: 30px; color: #38bdf8; }
+
+    .section h2 {
+      font-size: 2.5em;
+      margin-bottom: 30px;
+      color: #38bdf8;
+    }
 
     .card {
       background: #1e293b;
       padding: 30px;
       margin: 20px auto;
       border-radius: 15px;
-      max-width: 800px;
+      max-width: 900px;
       text-align: left;
       transition: 0.4s;
     }
 
     .card:hover {
-      transform: scale(1.05);
+      transform: scale(1.02);
       box-shadow: 0 0 30px rgba(56,189,248,0.4);
+    }
+
+    video {
+      margin-top: 20px;
+      border-radius: 12px;
+      outline: none;
     }
 
     footer {
@@ -120,7 +131,7 @@
       background: #020617;
     }
 
-    /* MEDIA QUERIES FOR PHONES */
+    /* RESPONSIVE */
     @media(max-width: 768px){
       .hero h1 { font-size: 8vw; }
       .hero p { font-size: 4vw; }
@@ -144,7 +155,7 @@
 <nav>
   <a href="#overview">Overview</a>
   <a href="#design">Design</a>
-  <a href="#progress">Project Progress</a>
+  <a href="#progress">Testing Video</a>
 </nav>
 
 <div class="hero">
@@ -162,13 +173,6 @@
       while applying real-world engineering principles such as aerodynamics,
       mechanical energy transfer, structural stability, and efficiency testing.
     </p>
-    <p>
-      Through research, prototyping, and experimentation, we are analyzing how
-      blade angle, blade shape, material selection, and wind speed affect power
-      output. This project demonstrates how sustainable energy systems can be
-      engineered to reduce reliance on fossil fuels and promote cleaner energy
-      alternatives.
-    </p>
   </div>
 </div>
 
@@ -178,25 +182,31 @@
     <p>
       We are testing different blade designs, materials, and structural layouts
       to maximize efficiency and durability. Each prototype undergoes wind
-      testing to measure rotation speed, energy output, and stability under
-      variable wind conditions.
-    </p>
-    <p>
-      By applying mechanical principles and material science, we aim to
-      optimize the windmill for real-world energy production while maintaining
-      safety and sustainability.
+      testing to measure rotation speed, energy output, and stability.
     </p>
   </div>
 </div>
 
 <div id="progress" class="section">
-  <h2>Project Progress</h2>
+  <h2>Project Testing Video</h2>
   <div class="card">
     <p>
-      We are currently building and testing our windmill prototypes. Photos,
-      diagrams, and detailed descriptions of each step will be added here as
-      the project progresses. 
+      Below is a live test analyzing torque, gear ratios,
+      and wheel resistance within our system.
     </p>
+
+    <video width="100%" controls>
+      <source src="copy_4BC7AB96-84F0-497A-9FC2-3589BDA1CE53.MOV" type="video/mp4">
+
+      <track src="captions-en.vtt"
+             kind="subtitles"
+             srclang="en"
+             label="English"
+             default>
+
+      Your browser does not support the video tag.
+    </video>
+
   </div>
 </div>
 
