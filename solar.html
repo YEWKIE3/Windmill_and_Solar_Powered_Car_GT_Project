@@ -64,7 +64,6 @@ nav ul li a:hover {
     z-index: 2;
     position: relative;
     animation: fadeIn 2s ease-in-out;
-    line-height: 1.2;
 }
 
 .hero p {
@@ -108,13 +107,15 @@ nav ul li a:hover {
     transition: all 0.8s ease;
 }
 
-.section.show { opacity: 1; transform: translateY(0); }
+.section.show { 
+    opacity: 1; 
+    transform: translateY(0); 
+}
 
 .section h2 {
     font-size: 2.5em;
     margin-bottom: 30px;
     color: #FFD700;
-    text-align: center;
 }
 
 /* CARDS */
@@ -144,12 +145,19 @@ nav ul li a:hover {
     box-shadow: 0 0 30px rgba(255,215,0,0.5);
 }
 
+/* VIDEO STYLE */
+.card video {
+    display: block;
+    margin: 20px auto;
+    width: 70%;
+    border-radius: 12px;
+}
+
 /* FOOTER */
 footer {
     padding: 30px;
     text-align: center;
     background: rgba(0,0,0,0.15);
-    color: white;
 }
 
 /* RESPONSIVE */
@@ -196,10 +204,7 @@ footer {
     <div class="card-container">
         <div class="card">
             <p>
-                Our solar car project focuses on designing and building a small-scale vehicle powered entirely by solar energy. The car converts sunlight into electrical energy using solar panels, which then supply power to a DC motor to drive the vehicle forward. The goal is to explore renewable energy solutions while applying real-world engineering principles such as energy conversion, motor efficiency, material selection, and overall vehicle performance.
-            </p>
-            <p>
-                Through research, testing, and iteration, we are analyzing how solar panel placement, panel efficiency, motor specifications, and weight distribution affect the car’s speed and energy output. This project demonstrates how sustainable energy systems can be engineered to reduce reliance on fossil fuels and promote cleaner, more efficient transportation alternatives.
+                Our solar car project focuses on designing and building a small-scale vehicle powered entirely by solar energy.
             </p>
         </div>
     </div>
@@ -211,7 +216,7 @@ footer {
     <div class="card-container">
         <div class="card">
             <p>
-               Our engineering design focuses on optimizing the performance of the solar car through careful testing and analysis of key components. We experiment with different gear ratios, motor configurations, and solar panel placements to maximize both speed and energy efficiency. Structural balance, weight distribution, and material selection are also critical considerations to ensure stability, durability, and overall performance. By combining these factors, we apply real-world engineering principles to create a functional and efficient renewable energy vehicle.
+               Our engineering design focuses on optimizing the performance of the solar car through testing and analysis.
             </p>
         </div>
     </div>
@@ -221,11 +226,17 @@ footer {
 <section id="testing" class="section">
     <h2>Testing & Performance</h2>
     <div class="card-container">
-        <div class="card">
-            <p>Under construction</p>
-            <img src="04E886B7-91D5-491B-A954-5190F5EC39BD.png" 
-                 alt="Solar Car Testing" 
-                 style="width:45%; border-radius:12px; margin-top:15px;">
+        <div class="card" style="text-align:center;">
+            
+            <video controls>
+                <source src="copy_42847C86-4EC4-49AD-A977-776E89313EC3.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+
+            <p style="opacity:0.85;">
+                Solar car prototype testing under direct sunlight.
+            </p>
+
         </div>
     </div>
 </section>
@@ -240,7 +251,6 @@ footer {
 <script>
 window.scrollTo(0,0);
 
-/* SECTION SCROLL ANIMATION */
 const sections = document.querySelectorAll('.section');
 window.addEventListener('scroll', ()=>{
     sections.forEach(section=>{
@@ -250,7 +260,6 @@ window.addEventListener('scroll', ()=>{
     });
 });
 
-/* HERO PARTICLES */
 window.onload = function() {
     const hero = document.querySelector('.hero');
     const numParticles = 30;
