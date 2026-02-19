@@ -228,10 +228,19 @@ footer {
     <div class="card-container">
         <div class="card" style="text-align:center;">
             
-            <video controls>
-                <source src="copy_42847C86-4EC4-49AD-A977-776E89313EC3.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
+            <video controls playsinline>
+    <source src="copy_42847C86-4EC4-49AD-A977-776E89313EC3.mp4" type="video/mp4">
+
+    <track
+        src="captions-en.vtt"
+        kind="captions"
+        srclang="en"
+        label="English"
+        default>
+
+    Your browser does not support the video tag.
+</video>
+
 
             <p style="opacity:0.85;">
                 Solar car prototype testing under direct sunlight.
