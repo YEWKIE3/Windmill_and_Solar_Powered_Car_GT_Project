@@ -54,7 +54,14 @@ nav a:hover { color: #38bdf8; }
   overflow: hidden;
 }
 
-/* Dark overlay for readability */
+/* Portrait phones - show LEFT side of image */
+@media (max-width: 768px) and (orientation: portrait) {
+  .hero {
+    background-position: left center;
+  }
+}
+
+/* Dark overlay */
 .hero::before {
   content: "";
   position: absolute;
