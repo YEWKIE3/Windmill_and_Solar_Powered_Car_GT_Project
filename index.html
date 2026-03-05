@@ -5,152 +5,173 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 html { scroll-behavior: smooth; }
-body { 
-    margin: 0; 
-    font-family: 'Segoe UI', sans-serif; 
-    background: linear-gradient(180deg, #0f172a 0%, #1e3a8a 40%, #3b82f6 100%); 
-    color: white; 
-    overflow-x: hidden; 
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(180deg, #0f172a 0%, #1e3a8a 40%, #3b82f6 100%);
+  color: white;
+  overflow-x: hidden;
 }
 
 /* NAVBAR */
-nav { 
-    position: fixed; 
-    width: 100%; 
-    background: rgba(15, 23, 42, 0.9); 
-    padding: 15px; 
-    text-align: center; 
-    z-index: 1001; 
-    backdrop-filter: blur(10px); 
+nav {
+  position: fixed;
+  width: 100%;
+  background: rgba(15, 23, 42, 0.9);
+  padding: 15px;
+  text-align: center;
+  z-index: 1001;
+  backdrop-filter: blur(10px);
 }
-nav a { 
-    color: white; 
-    margin: 0 20px; 
-    text-decoration: none; 
-    font-weight: bold; 
-    transition: 0.3s; 
+
+nav a {
+  color: white;
+  margin: 0 20px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
 }
+
 nav a:hover { color: #38bdf8; }
 
 /* HERO SECTION WITH IMAGE */
-.hero { 
-    height: 100vh; 
-    display: flex; 
-    flex-direction: column; 
-    justify-content: center; 
-    align-items: center; 
-    text-align: center; 
-    background-image: url("Untitled174_20260303001006.png"); 
-    background-size: cover; 
-    background-position: center; 
-    background-repeat: no-repeat; 
-    position: relative; 
-    overflow: hidden; 
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  background-image: url("Untitled174_20260303001006.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  position: relative;
+  overflow: hidden;
 }
-/* Dark overlay for readability */
-.hero::before { 
-    content: ""; 
-    position: absolute; 
-    inset: 0; 
-    background: rgba(0, 0, 0, 0.5); 
-    z-index: 1; 
+
+/* Portrait phones - show LEFT side of image */
+@media (max-width: 768px) and (orientation: portrait) {
+  .hero {
+    background-position: left center;
+  }
 }
-.hero h1 { 
-    font-size: 4em; 
-    z-index: 2; 
-    position: relative; 
-    animation: fadeIn 2s ease-in-out; 
-    line-height: 1.2; 
+
+/* Dark overlay */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
 }
-.hero p { 
-    font-size: 1.3em; 
-    margin-top: 20px; 
-    color: #38bdf8; 
-    z-index: 2; 
-    position: relative; 
-    animation: fadeIn 3s ease-in-out; 
+
+.hero h1 {
+  font-size: 4em;
+  z-index: 2;
+  position: relative;
+  animation: fadeIn 2s ease-in-out;
+  line-height: 1.2;
+}
+
+.hero p {
+  font-size: 1.3em;
+  margin-top: 20px;
+  color: #38bdf8;
+  z-index: 2;
+  position: relative;
+  animation: fadeIn 3s ease-in-out;
 }
 
 /* PARTICLES */
-.hero .circle { 
-    position: absolute; 
-    border-radius: 50%; 
-    pointer-events: none; 
-    background: #38bdf8; 
-    box-shadow: 0 0 10px rgba(56,189,248,0.5); 
-    opacity: 0.3; 
-    animation-name: floatUp; 
-    animation-timing-function: linear; 
-    animation-iteration-count: infinite; 
-    z-index: 2; 
+.hero .circle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  background: #38bdf8;
+  box-shadow: 0 0 10px rgba(56,189,248,0.5);
+  opacity: 0.3;
+  animation-name: floatUp;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  z-index: 2;
 }
-@keyframes floatUp { 
-    0% { bottom: 0; } 
-    100% { bottom: 100%; } 
+
+@keyframes floatUp {
+  0% { bottom: 0; }
+  100% { bottom: 100%; }
 }
-@keyframes fadeIn { 
-    from { opacity: 0; transform: translateY(40px); } 
-    to { opacity: 1; transform: translateY(0); } 
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* SECTIONS */
-.section { 
-    padding: 100px 10%; 
-    text-align: center; 
-    opacity: 0; 
-    transform: translateY(40px); 
-    transition: all 0.8s ease; 
-    background: transparent; 
+.section {
+  padding: 100px 10%;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+  background: transparent;
 }
-.section.show { 
-    opacity: 1; 
-    transform: translateY(0); 
+
+.section.show { opacity: 1; transform: translateY(0); }
+
+.section h2 {
+  font-size: 2.5em;
+  margin-bottom: 30px;
+  color: white;
 }
-.section h2 { 
-    font-size: 2.5em; 
-    margin-bottom: 30px; 
-    color: white; 
+
+.card {
+  background: rgba(30, 41, 59, 0.7);
+  padding: 30px;
+  margin: 20px auto;
+  border-radius: 15px;
+  max-width: 900px;
+  text-align: left;
+  transition: 0.4s;
+  color: white;
 }
-.card { 
-    background: rgba(30, 41, 59, 0.7); 
-    padding: 30px; 
-    margin: 20px auto; 
-    border-radius: 15px; 
-    max-width: 900px; 
-    text-align: left; 
-    transition: 0.4s; 
-    color: white; 
+
+.card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 30px rgba(56,189,248,0.4);
 }
-.card:hover { 
-    transform: scale(1.02); 
-    box-shadow: 0 0 30px rgba(56,189,248,0.4); 
+
+.card img {
+  display: block;
+  margin: 20px auto;
+  width: 45%;
+  border-radius: 12px;
 }
-.card img { 
-    display: block; 
-    margin: 20px auto; 
-    width: 45%; 
-    border-radius: 12px; 
-}
-footer { 
-    text-align: center; 
-    padding: 40px; 
-    background: rgba(0,0,0,0.2); 
+
+footer {
+  text-align: center;
+  padding: 40px;
+  background: rgba(0,0,0,0.2);
 }
 
 /* RESPONSIVE */
-@media(max-width: 768px){ 
-    .hero h1 { font-size: 8vw; } 
-    .hero p { font-size: 4vw; } 
-    .section h2 { font-size: 7vw; } 
-    .section { padding: 8vw 5%; } 
-    .card { padding: 4vw; } 
-    nav a { margin: 0 10px; font-size: 4vw; } 
+@media(max-width: 768px){
+  .hero h1 { font-size: 8vw; }
+  .hero p { font-size: 4vw; }
+  .section h2 { font-size: 7vw; }
+  .section { padding: 8vw 5%; }
+  .card { padding: 4vw; }
+  nav a { margin: 0 10px; font-size: 4vw; }
 }
-@media(max-width: 480px){ 
-    .hero h1 { font-size: 10vw; } 
-    .hero p { font-size: 5vw; } 
-    .section h2 { font-size: 9vw; } 
-    nav a { font-size: 5vw; } 
+
+@media(max-width: 480px){
+  .hero h1 { font-size: 10vw; }
+  .hero p { font-size: 5vw; }
+  .section h2 { font-size: 9vw; }
+  nav a { font-size: 5vw; }
 }
 </style>
 </head>
